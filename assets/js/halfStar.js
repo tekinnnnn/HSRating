@@ -27,7 +27,7 @@ function ratingStar(settings, rating) {
             normalizeAll(this.id, settings, currentRating);
     };
 
-    container.appendChild(createRect(0, settings));
+    //container.appendChild(createRect(0, settings));
     for (var i = 1; i < settings.starCount + 1; i++) {
         container.appendChild(createStar(i, settings));
     }
@@ -71,9 +71,10 @@ function ratingStar(settings, rating) {
         svg.style.cursor = "pointer";
         svg.style.transition = settings.transition;
         svg.style.webkitTransition = settings.transition;
-        svg.setAttribute('viewBox', "0 0 110 110");
+        //svg.setAttribute('viewBox', "0 0 100 100");
         svg.setAttribute('id', 'star' + starCounter);
         svg.setAttribute('width', 50);
+        svg.setAttribute('height', 50);
         svg.setAttribute('version', '1.0');
         svg.setAttribute('xmlns:dc', 'http://purl.org/dc/elements/1.1/');
         svg.setAttribute('xmlns:cc', 'http://web.resource.org/cc/');
@@ -82,56 +83,76 @@ function ratingStar(settings, rating) {
         svg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
 
         var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        g.setAttribute('id', 'transform');
-        g.setAttribute('transform', 'translate(-108.19401,2.5e-5)');
+        g.setAttribute('id', 'layer1');
 
-        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path.setAttribute('id', "halfStar" + (starCounter * 2 - 1));
-        path.setAttribute('d', 'M 162.194,4.99999 L 174.60317,43.19888 L 214.76712,43.1966 L 182.27246,66.802524 L 194.68597,105.00001 L 162.194,81.390382 L 129.70202,105.00001 L 142.11554,66.80253 L 109.62088,43.1966 L 149.78483,43.19888 L 162.194,4.99999 z');
-        path.style.fill = settings.starRightColor;
-        path.style.fillOpacity = 1;
-        path.style.fillRule = "evenodd";
-        path.style.stroke = "none";
-        path.style.strokeWidth = "10";
-        path.style.strokeLinecap = "round";
-        path.style.strokeLinejoin = "round";
-        path.style.strokeMiterlimit = 4;
-        path.style.strokeDasharray = "none";
-        path.style.strokeOpacity = 1;
-        path.onmouseover = function (e) {
+        var halfStarLeft = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        halfStarLeft.setAttribute('id', "halfStar" + (starCounter * 2 - 1));
+        halfStarLeft.setAttribute('d', 'm 25,2.0244914 c -1e-6,19.5224076 2e-6,27.9245256 0,38.1016496 L 9.5491498,47.975511 12.500001,31.350276 0,19.576207 17.274576,17.150627 z');
+        halfStarLeft.style.fill = settings.starRightColor;
+        halfStarLeft.style.fillOpacity = 1;
+        halfStarLeft.style.fillRule = "evenodd";
+        halfStarLeft.style.stroke = "none";
+        halfStarLeft.onmouseover = function (e) {
             highligtLeft((starCounter * 2 - 2), settings);
             //this.style.fill = settings.starHoverColor;
         };
-        path.onclick = function (e) {
-            console.log((starCounter * 2 - 1) / (10 / settings.tenOrfive));
+        halfStarLeft.onclick = function (e) {
+            console.log("rating : " + (starCounter * 2 - 1) / (10 / settings.tenOrfive));
             currentRating = starCounter * 2 - 2;
         };
 
-        var path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path2.setAttribute('id', "halfStar" + (starCounter * 2));
-        path2.setAttribute('d', 'M 162.20464,81.37494 L 194.70464,104.99995 L 182.29839,66.81244 L 214.76714,43.18744 L 174.61089,43.18744 L 162.20464,4.99994 L 162.20464,81.37494 z');
-        path2.style.fill = settings.starRightColor;
-        path2.style.fillOpacity = 1;
-        path2.style.fillRule = "evenodd";
-        path2.style.stroke = "none";
-        path2.style.strokeWidth = "10";
-        path2.style.strokeLinecap = "round";
-        path2.style.strokeLinejoin = "round";
-        path2.style.strokeMiterlimit = 4;
-        path2.style.strokeDasharray = "none";
-        path2.style.strokeOpacity = 1;
-        path2.onmouseover = function (e) {
+        var halfSpaceLeft = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        halfSpaceLeft.setAttribute('width', 25);
+        halfSpaceLeft.setAttribute('height', 50);
+        halfSpaceLeft.setAttribute('x', 0);
+        halfSpaceLeft.setAttribute('y', 0);
+        halfSpaceLeft.id = 'halfSpaceLeft';
+        halfSpaceLeft.style.fill = 'none';
+        halfSpaceLeft.onmouseover = function (e) {
+            alert("qwe");
+            highligtLeft((starCounter * 2 - 2), settings);
+            //this.style.fill = settings.starHoverColor;
+        };
+        halfSpaceLeft.onclick = function (e) {            alert("qwe");
+
+            console.log("rating : " + (starCounter * 2 - 1) / (10 / settings.tenOrfive));
+            currentRating = starCounter * 2 - 2;
+        };
+
+        var halfStarRight = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        halfStarRight.setAttribute('id', "halfStar" + (starCounter * 2));
+        halfStarRight.setAttribute('d', 'm 25,2.0244894 c 0,19.5224076 -2e-6,27.9245266 0,38.1016506 L 40.450851,47.975511 37.5,31.350275 50,19.576205 32.725424,17.150625 z');
+        halfStarRight.style.fill = settings.starRightColor;
+        halfStarRight.style.fillOpacity = 1;
+        halfStarRight.style.fillRule = "evenodd";
+        halfStarRight.style.stroke = "none";
+        halfStarRight.onmouseover = function (e) {
             highligtLeft((starCounter * 2 - 1), settings);
             //this.style.fill = settings.starHoverColor;
         };
-        path2.onclick = function (e) {
-            console.log(starCounter * 2 / (10 / settings.tenOrfive));
+        halfStarRight.onclick = function (e) {
+            console.log("rating : " + (starCounter * 2) / (10 / settings.tenOrfive));
             currentRating = starCounter * 2 - 1;
             rating = currentRating;
         };
 
-        $(path).appendTo(g);
-        $(path2).appendTo(g);
+        var halfSpaceRight = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        halfSpaceRight.setAttribute('width', 25);
+        halfSpaceRight.setAttribute('height', 50);
+        halfSpaceRight.setAttribute('x', 25);
+        halfSpaceRight.setAttribute('y', 0);
+        halfSpaceRight.id = 'halfSpaceRight';
+        halfSpaceRight.style.fill = 'none';
+        halfSpaceRight.onclick = function (e) {            alert("qwe");
+
+            console.log((starCounter * 2 - 1) / (10 / settings.tenOrfive));
+            currentRating = starCounter * 2 - 2;
+        };
+
+        $(halfSpaceLeft).appendTo(g);
+        $(halfStarLeft).appendTo(g);
+        $(halfSpaceRight).appendTo(g);
+        $(halfStarRight).appendTo(g);
         $(g).appendTo(svg);
         return svg;
     }
