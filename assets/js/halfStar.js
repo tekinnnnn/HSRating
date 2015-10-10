@@ -24,7 +24,10 @@ function ratingStar(settings, rating) {
     container.id = containerID;
     container.onmouseout = function (e) {
         if (e.relatedTarget != null && this.id != e.relatedTarget.parentNode.id)
-            normalizeAll(this.id, settings, currentRating);
+            if (e.relatedTarget.id.substr('0,9') == "halfSpace")
+                alert("qwe");
+            else
+                normalizeAll(this.id, settings, currentRating);
     };
 
     //container.appendChild(createRect(0, settings));
@@ -107,14 +110,12 @@ function ratingStar(settings, rating) {
         halfSpaceLeft.setAttribute('x', 0);
         halfSpaceLeft.setAttribute('y', 0);
         halfSpaceLeft.id = 'halfSpaceLeft';
-        halfSpaceLeft.style.fill = 'none';
+        halfSpaceLeft.style.fill = 'rgb(255,255,255)';
         halfSpaceLeft.onmouseover = function (e) {
-            alert("qwe");
             highligtLeft((starCounter * 2 - 2), settings);
             //this.style.fill = settings.starHoverColor;
         };
-        halfSpaceLeft.onclick = function (e) {            alert("qwe");
-
+        halfSpaceLeft.onclick = function (e) {
             console.log("rating : " + (starCounter * 2 - 1) / (10 / settings.tenOrfive));
             currentRating = starCounter * 2 - 2;
         };
@@ -142,10 +143,13 @@ function ratingStar(settings, rating) {
         halfSpaceRight.setAttribute('x', 25);
         halfSpaceRight.setAttribute('y', 0);
         halfSpaceRight.id = 'halfSpaceRight';
-        halfSpaceRight.style.fill = 'none';
-        halfSpaceRight.onclick = function (e) {            alert("qwe");
-
-            console.log((starCounter * 2 - 1) / (10 / settings.tenOrfive));
+        halfSpaceRight.style.fill = 'rgb(255,255,255)';
+        halfSpaceRight.onmouseover = function (e) {
+            highligtLeft((starCounter * 2 - 1), settings);
+            //this.style.fill = settings.starHoverColor;
+        };
+        halfSpaceRight.onclick = function (e) {
+            console.log("rating : " + (starCounter * 2) / (10 / settings.tenOrfive));
             currentRating = starCounter * 2 - 2;
         };
 
