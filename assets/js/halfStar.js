@@ -5,8 +5,9 @@ function ratingStar(settings, rating) {
         "starHoverColor": "#f2f200",
         "starWidth": 50,
         "starCount": 5,
-        "tenOrfive": 5
-    }
+        "tenOrfive": 5,
+        "transition": "fill 1s cubic-bezier(0.4, 0, 1, 1)"
+    };
 
     var containerID = 'halfStarRatingAPI';
     var currentRating = -1;
@@ -24,18 +25,52 @@ function ratingStar(settings, rating) {
     container.onmouseout = function (e) {
         if (e.relatedTarget != null && this.id != e.relatedTarget.parentNode.id)
             normalizeAll(this.id, settings, currentRating);
-    }
+    };
 
+    container.appendChild(createRect(0, settings));
     for (var i = 1; i < settings.starCount + 1; i++) {
         container.appendChild(createStar(i, settings));
     }
     document.body.appendChild(container);
 
+    function createRect(starCounter, settings) {
+        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.style.cursor = "pointer";
+        svg.style.transition = settings.transition;
+        svg.style.webkitTransition = settings.transition;
+        svg.setAttribute('viewBox', "0 0 10 50");
+        svg.setAttribute('id', 'star' + starCounter);
+        svg.setAttribute('width', 10);
+        svg.setAttribute('height', 50);
+        svg.setAttribute('version', '1.0');
+        svg.setAttribute('xmlns:dc', 'http://purl.org/dc/elements/1.1/');
+        svg.setAttribute('xmlns:cc', 'http://web.resource.org/cc/');
+        svg.setAttribute('xmlns:rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
+        svg.setAttribute('xmlns:svg', 'http://www.w3.org/2000/svg');
+        svg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+
+        var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('width', 10);
+        rect.setAttribute('height', 50);
+        rect.style.opacity = 0;
+        rect.onmouseover = function (e) {
+            highligtLeft((starCounter * 2 - 2), settings);
+            //this.style.fill = settings.starHoverColor;
+        };
+        rect.onclick = function (e) {
+            console.log((starCounter * 2) / (10 / settings.tenOrfive));
+            currentRating = starCounter * 2 - 2;
+        };
+
+        $(rect).appendTo(svg);
+        return svg;
+    }
+
     function createStar(starCounter, settings) {
         var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         svg.style.cursor = "pointer";
-        svg.style.transition = "fill 1s cubic-bezier(0.4, 0, 1, 1)";
-        svg.style.webkitTransition = "fill 1s cubic-bezier(0.4, 0, 1, 1)"
+        svg.style.transition = settings.transition;
+        svg.style.webkitTransition = settings.transition;
         svg.setAttribute('viewBox', "0 0 110 110");
         svg.setAttribute('id', 'star' + starCounter);
         svg.setAttribute('width', 50);
@@ -66,11 +101,11 @@ function ratingStar(settings, rating) {
         path.onmouseover = function (e) {
             highligtLeft((starCounter * 2 - 2), settings);
             //this.style.fill = settings.starHoverColor;
-        }
+        };
         path.onclick = function (e) {
             console.log((starCounter * 2 - 1) / (10 / settings.tenOrfive));
             currentRating = starCounter * 2 - 2;
-        }
+        };
 
         var path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         path2.setAttribute('id', "halfStar" + (starCounter * 2));
@@ -88,12 +123,12 @@ function ratingStar(settings, rating) {
         path2.onmouseover = function (e) {
             highligtLeft((starCounter * 2 - 1), settings);
             //this.style.fill = settings.starHoverColor;
-        }
+        };
         path2.onclick = function (e) {
             console.log(starCounter * 2 / (10 / settings.tenOrfive));
             currentRating = starCounter * 2 - 1;
             rating = currentRating;
-        }
+        };
 
         $(path).appendTo(g);
         $(path2).appendTo(g);
