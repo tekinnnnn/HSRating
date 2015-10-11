@@ -3,6 +3,7 @@ function ratingStar(settings, rating) {
         "starLeftColor": "#ffff00",
         "starRightColor": "#ffffd2",
         "starHoverColor": "#f2f200",
+        "backgroundColor": "#fff",
         "starWidth": 50,
         "starCount": 5,
         "tenOrfive": 5,
@@ -62,7 +63,7 @@ function ratingStar(settings, rating) {
         };
         rect.onclick = function (e) {
             console.log("rating : " + (starCounter * 2) / (10 / settings.tenOrfive));
-            currentRating = starCounter * 2 - 2;
+            currentRating = starCounter % 2 == 0 ? starCounter * 2 - 2 : starCounter * 2 - 1;
         };
 
         $(rect).appendTo(svg);
@@ -110,7 +111,7 @@ function ratingStar(settings, rating) {
         halfSpaceLeft.setAttribute('x', 0);
         halfSpaceLeft.setAttribute('y', 0);
         halfSpaceLeft.id = 'halfSpaceLeft';
-        halfSpaceLeft.style.fill = 'rgb(255,255,255)';
+        halfSpaceLeft.style.fill = settings.backgroundColor;
         halfSpaceLeft.onmouseover = function (e) {
             highligtLeft((starCounter * 2 - 2), settings);
             //this.style.fill = settings.starHoverColor;
@@ -143,14 +144,14 @@ function ratingStar(settings, rating) {
         halfSpaceRight.setAttribute('x', 25);
         halfSpaceRight.setAttribute('y', 0);
         halfSpaceRight.id = 'halfSpaceRight';
-        halfSpaceRight.style.fill = 'rgb(255,255,255)';
+        halfSpaceRight.style.fill = settings.backgroundColor;
         halfSpaceRight.onmouseover = function (e) {
             highligtLeft((starCounter * 2 - 1), settings);
             //this.style.fill = settings.starHoverColor;
         };
         halfSpaceRight.onclick = function (e) {
             console.log("rating : " + (starCounter * 2) / (10 / settings.tenOrfive));
-            currentRating = starCounter * 2 - 2;
+            currentRating = starCounter * 2 - 1;
         };
 
         $(halfSpaceLeft).appendTo(g);
