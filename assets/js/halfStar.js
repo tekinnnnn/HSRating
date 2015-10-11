@@ -30,10 +30,11 @@ function ratingStar(settings, rating) {
                 normalizeAll(this.id, settings, currentRating);
     };
 
-    //container.appendChild(createRect(0, settings));
+    container.appendChild(createRect(0, settings));
     for (var i = 1; i < settings.starCount + 1; i++) {
         container.appendChild(createStar(i, settings));
     }
+    container.appendChild(createRect(5, settings));
     document.body.appendChild(container);
 
     function createRect(starCounter, settings) {
@@ -41,7 +42,6 @@ function ratingStar(settings, rating) {
         svg.style.cursor = "pointer";
         svg.style.transition = settings.transition;
         svg.style.webkitTransition = settings.transition;
-        svg.setAttribute('viewBox', "0 0 10 50");
         svg.setAttribute('id', 'star' + starCounter);
         svg.setAttribute('width', 10);
         svg.setAttribute('height', 50);
@@ -57,11 +57,11 @@ function ratingStar(settings, rating) {
         rect.setAttribute('height', 50);
         rect.style.opacity = 0;
         rect.onmouseover = function (e) {
-            highligtLeft((starCounter * 2 - 2), settings);
+            highligtLeft((starCounter * 2 - 1), settings);
             //this.style.fill = settings.starHoverColor;
         };
         rect.onclick = function (e) {
-            console.log((starCounter * 2) / (10 / settings.tenOrfive));
+            console.log("rating : " + (starCounter * 2) / (10 / settings.tenOrfive));
             currentRating = starCounter * 2 - 2;
         };
 
