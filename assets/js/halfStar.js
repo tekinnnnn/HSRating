@@ -1,12 +1,12 @@
 function ratingStar(settings, rating) {
     var defaults = {
         "starLeftColor": "#ffff00",
-        "starRightColor": "#ffffd2",
+        "starColor": "#ffffd2",
         "starHoverColor": "#f2f200",
         "backgroundColor": "#fff",
         "starWidth": 50,
-        "starCount": 5,
-        "tenOrfive": 5,
+        "starCount": 10,
+        "tenOrfive": 10,
         "transition": "fill 1s cubic-bezier(0.4, 0, 1, 1)"
     };
 
@@ -25,10 +25,8 @@ function ratingStar(settings, rating) {
     container.id = containerID;
     container.onmouseout = function (e) {
         if (e.relatedTarget != null && this.id != e.relatedTarget.parentNode.id)
-            if (e.relatedTarget.id.substr('0,9') == "halfSpace")
-                alert("qwe");
-            else
-                normalizeAll(this.id, settings, currentRating);
+        //if (e.relatedTarget.id.substr('0,9') != "halfSpace")
+            normalizeAll(this.id, settings, currentRating);
     };
 
     container.appendChild(createRect(0, settings));
@@ -58,12 +56,12 @@ function ratingStar(settings, rating) {
         rect.setAttribute('height', 50);
         rect.style.opacity = 0;
         rect.onmouseover = function (e) {
-            highligtLeft((starCounter * 2 - 1), settings);
+            highligtLeft(settings.starCount == 10 ? (starCounter * 2 * 2 - 1) : starCounter * 2 - 1, settings);
             //this.style.fill = settings.starHoverColor;
         };
         rect.onclick = function (e) {
-            console.log("rating : " + (starCounter * 2) / (10 / settings.tenOrfive));
-            currentRating = starCounter % 2 == 0 ? starCounter * 2 - 2 : starCounter * 2 - 1;
+            console.log("rating : " + (starCounter * 2) * (settings.tenOrfive / 10));
+            currentRating = (settings.starCount == 10 ? (((starCounter) * 2 * 2) - 1) : ((starCounter * 2) - 1));
         };
 
         $(rect).appendTo(svg);
@@ -92,17 +90,17 @@ function ratingStar(settings, rating) {
         var halfStarLeft = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         halfStarLeft.setAttribute('id', "halfStar" + (starCounter * 2 - 1));
         halfStarLeft.setAttribute('d', 'm 25,2.0244914 c -1e-6,19.5224076 2e-6,27.9245256 0,38.1016496 L 9.5491498,47.975511 12.500001,31.350276 0,19.576207 17.274576,17.150627 z');
-        halfStarLeft.style.fill = settings.starRightColor;
+        halfStarLeft.style.fill = settings.starColor;
         halfStarLeft.style.fillOpacity = 1;
         halfStarLeft.style.fillRule = "evenodd";
         halfStarLeft.style.stroke = "none";
         halfStarLeft.onmouseover = function (e) {
-            highligtLeft((starCounter * 2 - 2), settings);
+            highligtLeft(settings.starCount == 10 ? starCounter * 2 - 1 : starCounter * 2 - 2, settings);
             //this.style.fill = settings.starHoverColor;
         };
         halfStarLeft.onclick = function (e) {
-            console.log("rating : " + (starCounter * 2 - 1) / (10 / settings.tenOrfive));
-            currentRating = starCounter * 2 - 2;
+            console.log("rating : " + (settings.starCount == 10 ? (starCounter) * (settings.tenOrfive / 10) : (starCounter * 2 - 1) * (settings.tenOrfive / 10)));
+            currentRating = (settings.starCount == 10 ? ((starCounter) * 2) - 1 : ((starCounter - 1) * 2));
         };
 
         var halfSpaceLeft = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
@@ -113,18 +111,18 @@ function ratingStar(settings, rating) {
         halfSpaceLeft.id = 'halfSpaceLeft';
         halfSpaceLeft.style.fill = settings.backgroundColor;
         halfSpaceLeft.onmouseover = function (e) {
-            highligtLeft((starCounter * 2 - 2), settings);
+            highligtLeft(settings.starCount == 10 ? starCounter * 2 - 1 : starCounter * 2 - 2, settings);
             //this.style.fill = settings.starHoverColor;
         };
         halfSpaceLeft.onclick = function (e) {
-            console.log("rating : " + (starCounter * 2 - 1) / (10 / settings.tenOrfive));
-            currentRating = starCounter * 2 - 2;
+            console.log("rating : " + (settings.starCount == 10 ? (starCounter) * (settings.tenOrfive / 10) : (starCounter * 2 - 1) * (settings.tenOrfive / 10)));
+            currentRating = (settings.starCount == 10 ? ((starCounter) * 2) - 1 : ((starCounter * 2) - 2));
         };
 
         var halfStarRight = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         halfStarRight.setAttribute('id', "halfStar" + (starCounter * 2));
         halfStarRight.setAttribute('d', 'm 25,2.0244894 c 0,19.5224076 -2e-6,27.9245266 0,38.1016506 L 40.450851,47.975511 37.5,31.350275 50,19.576205 32.725424,17.150625 z');
-        halfStarRight.style.fill = settings.starRightColor;
+        halfStarRight.style.fill = settings.starColor;
         halfStarRight.style.fillOpacity = 1;
         halfStarRight.style.fillRule = "evenodd";
         halfStarRight.style.stroke = "none";
@@ -133,7 +131,7 @@ function ratingStar(settings, rating) {
             //this.style.fill = settings.starHoverColor;
         };
         halfStarRight.onclick = function (e) {
-            console.log("rating : " + (starCounter * 2) / (10 / settings.tenOrfive));
+            console.log("rating : " + (settings.starCount == 10 ? starCounter * (settings.tenOrfive / 10) : starCounter * (settings.tenOrfive / 5)));
             currentRating = starCounter * 2 - 1;
             rating = currentRating;
         };
@@ -150,7 +148,7 @@ function ratingStar(settings, rating) {
             //this.style.fill = settings.starHoverColor;
         };
         halfSpaceRight.onclick = function (e) {
-            console.log("rating : " + (starCounter * 2) / (10 / settings.tenOrfive));
+            console.log("rating : " + (settings.starCount == 10 ? starCounter * (settings.tenOrfive / 10) : starCounter * (settings.tenOrfive / 5)));
             currentRating = starCounter * 2 - 1;
         };
 
@@ -163,22 +161,20 @@ function ratingStar(settings, rating) {
     }
 
     function highligtLeft(starCounter, settings) {
-        var leftQuery = "";
-        var rightQuery = "";
-        for (var i = 1; i < 11; i++) {
+        for (var i = 1; i < (10 * settings.starCount / 5) + 1; i++) {
             if (i < starCounter + 2)
                 document.getElementById("halfStar" + i).style.fill = settings.starHoverColor;
             else
-                document.getElementById("halfStar" + i).style.fill = settings.starRightColor;
+                document.getElementById("halfStar" + i).style.fill = settings.starColor;
         }
     }
 
     function normalizeAll(containerId, settings, currentRating) {
-        for (var i = 1; i < 11; i++) {
+        for (var i = 1; i < (10 * settings.starCount / 5) + 1; i++) {
             if (i < currentRating + 2)
                 document.getElementById("halfStar" + i).style.fill = settings.starHoverColor;
             else
-                document.getElementById("halfStar" + i).style.fill = settings.starRightColor;
+                document.getElementById("halfStar" + i).style.fill = settings.starColor;
         }
     }
 
