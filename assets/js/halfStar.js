@@ -6,7 +6,8 @@ function ratingStar(settings, rating) {
         "backgroundColor": "#fff",
         "starWidth": 50,
         "starCount": 10,
-        "tenOrfive": 10,
+        "tenOrfive": 5,
+        "percent": true,
         "transition": "fill 1s cubic-bezier(0.4, 0, 1, 1)"
     };
 
@@ -95,12 +96,12 @@ function ratingStar(settings, rating) {
         halfStarLeft.style.fillRule = "evenodd";
         halfStarLeft.style.stroke = "none";
         halfStarLeft.onmouseover = function (e) {
-            highligtLeft(settings.starCount == 10 ? starCounter * 2 - 1 : starCounter * 2 - 2, settings);
+            highligtLeft(settings.starCount == 10 ? starCounter * 2 - (settings.percent ? 2 : 1) : starCounter * 2 - 2, settings);
             //this.style.fill = settings.starHoverColor;
         };
         halfStarLeft.onclick = function (e) {
-            console.log("rating : " + (settings.starCount == 10 ? (starCounter) * (settings.tenOrfive / 10) : (starCounter * 2 - 1) * (settings.tenOrfive / 10)));
-            currentRating = (settings.starCount == 10 ? ((starCounter) * 2) - 1 : ((starCounter - 1) * 2));
+            console.log("rating : " + (settings.starCount == 10 ? (starCounter - (settings.percent ? 1 / 2 : 0)) * (settings.tenOrfive / 10) : (starCounter * 2 - 1) * (settings.tenOrfive / 10)));
+            currentRating = (settings.starCount == 10 ? ((starCounter) * 2) - (settings.percent ? 2 : 1) : ((starCounter - 1) * 2));
         };
 
         var halfSpaceLeft = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
@@ -111,12 +112,12 @@ function ratingStar(settings, rating) {
         halfSpaceLeft.id = 'halfSpaceLeft';
         halfSpaceLeft.style.fill = settings.backgroundColor;
         halfSpaceLeft.onmouseover = function (e) {
-            highligtLeft(settings.starCount == 10 ? starCounter * 2 - 1 : starCounter * 2 - 2, settings);
+            highligtLeft(settings.starCount == 10 ? starCounter * 2 - (settings.percent ? 2 : 1) : starCounter * 2 - 2, settings);
             //this.style.fill = settings.starHoverColor;
         };
         halfSpaceLeft.onclick = function (e) {
-            console.log("rating : " + (settings.starCount == 10 ? (starCounter) * (settings.tenOrfive / 10) : (starCounter * 2 - 1) * (settings.tenOrfive / 10)));
-            currentRating = (settings.starCount == 10 ? ((starCounter) * 2) - 1 : ((starCounter * 2) - 2));
+            console.log("rating : " + (settings.starCount == 10 ? (starCounter - (settings.percent ? 1 / 2 : 0)) * (settings.tenOrfive / 10) : (starCounter * 2 - 1) * (settings.tenOrfive / 10)));
+            currentRating = (settings.starCount == 10 ? ((starCounter) * 2) - (settings.percent ? 2 : 1) : ((starCounter * 2) - 2));
         };
 
         var halfStarRight = document.createElementNS('http://www.w3.org/2000/svg', 'path');
