@@ -1,13 +1,13 @@
 function ratingStar(settings) {
     var defaults = {
-        "starColor": "#ffffd2",
-        "starHoverColor": "#f2f200",
-        "backgroundColor": "#fff",
-        "starWidth": 50,
-        "starCount": 10,
-        "tenOrfive": 10,
-        "percent": true,
-        "transition": "fill 1s cubic-bezier(0.4, 0, 1, 1)"
+        "starColor": "#ffffd2", // Rating Star Color | Fill
+        "starHoverColor": "#f2f200", // Rating Star Mouse Over Color | Fill
+        "backgroundColor": "#fff", // Rating Star Color | Background
+        "starWidth": 50, // Rating star width
+        "starCount": 10, // Rating star count
+        "tenOrfive": 10, // [10|5]
+        "percent": true, // [true|false]
+        "transition": "fill 1s cubic-bezier(0.4, 0, 1, 1)" // Transition effect
     };
 
     // TODO: tıklamaların returnlerini virgülden sonra ($n) rakam olacak şekilde ver
