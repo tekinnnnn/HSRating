@@ -21,7 +21,6 @@ function ratingStar(settings) {
     $.each(defaults, function (key, val) {
         if (settings[key] == undefined)
             settings[key] = val;
-        console.log(settings[key])
     });
 
     var container = document.createElement('div');
