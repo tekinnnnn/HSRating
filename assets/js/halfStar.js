@@ -1,12 +1,11 @@
-function ratingStar(settings, rating) {
+function ratingStar(settings) {
     var defaults = {
-        "starLeftColor": "#ffff00",
         "starColor": "#ffffd2",
         "starHoverColor": "#f2f200",
         "backgroundColor": "#fff",
         "starWidth": 50,
-        "starCount": 50,
-        "tenOrfive": 5,
+        "starCount": 10,
+        "tenOrfive": 10,
         "percent": true,
         "transition": "fill 1s cubic-bezier(0.4, 0, 1, 1)"
     };
@@ -20,8 +19,9 @@ function ratingStar(settings, rating) {
         settings = defaults;
 
     $.each(defaults, function (key, val) {
-        if (settings.key == undefined)
+        if (settings[key] == undefined)
             settings[key] = val;
+        console.log(settings[key])
     });
 
     var container = document.createElement('div');
@@ -136,7 +136,6 @@ function ratingStar(settings, rating) {
         halfStarRight.onclick = function (e) {
             console.log("rating : " + (settings.starCount == 10 ? starCounter * (settings.tenOrfive / 10) : starCounter * (settings.tenOrfive * 2 / (settings.starCount) / 2)));
             currentRating = starCounter * 2 - 1;
-            rating = currentRating;
         };
 
         var halfSpaceRight = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
