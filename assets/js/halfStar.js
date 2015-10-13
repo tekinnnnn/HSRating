@@ -2,7 +2,7 @@ function ratingStar(settings) {
     var defaults = {
         "starColor": "#ffffd2", // Rating Star Color | Fill
         "starHoverColor": "#f2f200", // Rating Star Mouse Over Color | Fill
-        "backgroundColor": "#fff", // Rating Star Color | Background
+        "backgroundColor": "transparent", // Rating Star Color | Background
         "starWidth": 50, // Rating star width
         "starCount": 10, // Rating star count
         "tenOrfive": 10, // [10|5]
