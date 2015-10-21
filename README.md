@@ -30,6 +30,6 @@ ve daha birçok kişiselleştirmeye imkan tanıyan rating (puanlama) scriptidir.
 |backgroundColor| transparent | Yıldızların arkaplan rengi | Boşluklar|
 |starWidth| 50 | Her bir yıldızın genişliği|
 |starCount| 10 | Yıldız sayısı|
-|tenOrfive| 10 | Oylama aralığı | [1|2|3|..|10|..|9999|..]|
+|pollingInterval| 10 | Oylama aralığı | [1|2|3|..|10|..|9999|..]|
 |percent| true | Yarım puan oy verebilme | Verememe | [true|false]|
 |transition| fill 1s cubic-bezier(0.4, 0, 1, 1) | Transition effect|
