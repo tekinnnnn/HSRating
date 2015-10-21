@@ -13,7 +13,7 @@ kullanarak;
 ve daha birçok kişiselleştirmeye imkan tanıyan rating (puanlama) scriptidir.
 
 ## Ne yapmanıza gerek kalmaz?
-* web sitenizde puanlama olanağı sunmak için api lerle uğraşmazsınız
+* Web sitenizde puanlama olanağı sunmak için API'lerle uğraşmazsınız
 * HSRating System SVG kullandığı için sayfa yüklenme hızınızı düşüren imaj dosyalarıyla uğraşmazsınız
 * Yıldızların rengini değiştirmek için bir imaj editöre ihtiyacınız kalmaz, rengin kodunu girersiniz ve iş biter
 
@@ -39,13 +39,13 @@ ve daha birçok kişiselleştirmeye imkan tanıyan rating (puanlama) scriptidir.
 <script type="text/javascript" src="yourJavascriptDirectory/halfStar.js"></script>
 ```
 
-Daha sonra ***yukarıdaki satırların altında olmak kaydıyla*** sayfanın istediğiniz yerine aşağıdaki satırları eklemeniz yeterlidir.
+Daha sonra **yukarıdaki satırların altında olmak kaydıyla** sayfanın istediğiniz yerine aşağıdaki satırları eklemeniz yeterlidir.
 ```html
 <script type="text/javascript">
   ratingStar();
 </script>
 ```
-*Özelleştirme yapmak istiyorsanız;*
+**Özelleştirme yapmak istiyorsanız;**
 
  Örneğin oylamayı 15 puan üzerinden yapmak ve yarım puan oylamayı açık yapmak istiyorsanız
 ```html
