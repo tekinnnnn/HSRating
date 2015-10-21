@@ -1,6 +1,6 @@
 # halfStarRatingSystem
 
-# Nedir ?
+## Nedir ?
 +Javascript
 +Jquery
 +SVG
