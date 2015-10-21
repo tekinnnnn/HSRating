@@ -1,4 +1,4 @@
-# halfStarRatingSystem
+# HSRating System
 
 ## Nedir ?
 * Javascript
