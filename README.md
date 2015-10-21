@@ -8,7 +8,7 @@
 kullanarak;
 * istenilen sayıda yıldız ile 
 * istenilen puanlama ölçütü üzerinden
-* yarım puan oy (verme | vermeme),
+* yarım puan oy verme 
 ve daha birçok kişiselleştirmeye imkan tanıyan rating (puanlama) scriptidir.
 
 ## Ne yapmanıza gerek kalmaz?
