@@ -1,18 +1,18 @@
 function ratingStar(settings) {
     var defaults = {
-        "starColor": "#ffffd2", // Rating Star Color | Fill
-        "starHoverColor": "#f2f200", // Rating Star Mouse Over Color | Fill
-        "backgroundColor": "transparent", // Rating Star Color | Background
-        "starWidth": 50, // Rating star width
-        "starCount": 10, // Rating star count
-        "tenOrfive": 10, // [10|5]
-        "percent": true, // [true|false]
+        "starColor": "#ffffd2", // Yıldızların mouse üzerinde değilkenki rengi | Fill
+        "starHoverColor": "#f2f200", // Yıldızların mouse üzerine geldiğinde ve tıklandıldığındaki rengi | Fill
+        "backgroundColor": "transparent", // Yıldızların arkaplan rengi | Boşluklar
+        "starWidth": 50, // Her bir yıldızın genişliği
+        "starCount": 10, // Yıldız sayısı
+        "pollingInterval": 10, // Oylama aralığı | [1|2|3|..|10|..|9999|..]
+        "percent": true, // Yarım puan oy verebilme | Verememe | [true|false]
         "transition": "fill 1s cubic-bezier(0.4, 0, 1, 1)" // Transition effect
     };
 
     // TODO: tıklamaların returnlerini virgülden sonra ($n) rakam olacak şekilde ver
 
-    var containerID = 'halfStarRatingAPI';
+    var containerID = 'HSRatingSystem';
     var currentRating = -1;
 
     if (settings == undefined)
@@ -62,7 +62,7 @@ function ratingStar(settings) {
             //this.style.fill = settings.starHoverColor;
         };
         rect.onclick = function (e) {
-            console.log("rating : " + (starCounter * 2) * (settings.tenOrfive / (settings.starCount) / 2));
+            console.log("rating : " + (starCounter * 2) * (settings.pollingInterval / (settings.starCount) / 2));
             currentRating = (settings.starCount == 10 ? (((starCounter) * 2 * 2) - 1) : ((starCounter * 2) - 1));
         };
 
@@ -101,7 +101,7 @@ function ratingStar(settings) {
             //this.style.fill = settings.starHoverColor;
         };
         halfStarLeft.onclick = function (e) {
-            console.log("rating : " + (settings.starCount == 10 ? (starCounter - (settings.percent ? 1 / 2 : 0)) * (settings.tenOrfive / 10) : (starCounter * 2 - 1) * (settings.tenOrfive / (settings.starCount) / 2)));
+            console.log("rating : " + (settings.starCount == 10 ? (starCounter - (settings.percent ? 1 / 2 : 0)) * (settings.pollingInterval / 10) : (starCounter * 2 - 1) * (settings.pollingInterval / (settings.starCount) / 2)));
             currentRating = (settings.starCount == 10 ? ((starCounter) * 2) - (settings.percent ? 2 : 1) : ((starCounter - 1) * 2));
         };
 
@@ -117,7 +117,7 @@ function ratingStar(settings) {
             //this.style.fill = settings.starHoverColor;
         };
         halfSpaceLeft.onclick = function (e) {
-            console.log("rating : " + (settings.starCount == 10 ? (starCounter - (settings.percent ? 1 / 2 : 0)) * (settings.tenOrfive / 10) : (starCounter * 2 - 1) * (settings.tenOrfive / (settings.starCount) / 2)));
+            console.log("rating : " + (settings.starCount == 10 ? (starCounter - (settings.percent ? 1 / 2 : 0)) * (settings.pollingInterval / 10) : (starCounter * 2 - 1) * (settings.pollingInterval / (settings.starCount) / 2)));
             currentRating = (settings.starCount == 10 ? ((starCounter) * 2) - (settings.percent ? 2 : 1) : ((starCounter * 2) - 2));
         };
 
@@ -133,7 +133,7 @@ function ratingStar(settings) {
             //this.style.fill = settings.starHoverColor;
         };
         halfStarRight.onclick = function (e) {
-            console.log("rating : " + (settings.starCount == 10 ? starCounter * (settings.tenOrfive / 10) : starCounter * (settings.tenOrfive * 2 / (settings.starCount) / 2)));
+            console.log("rating : " + (settings.starCount == 10 ? starCounter * (settings.pollingInterval / 10) : starCounter * (settings.pollingInterval * 2 / (settings.starCount) / 2)));
             currentRating = starCounter * 2 - 1;
         };
 
@@ -149,7 +149,7 @@ function ratingStar(settings) {
             //this.style.fill = settings.starHoverColor;
         };
         halfSpaceRight.onclick = function (e) {
-            console.log("rating : " + (settings.starCount == 10 ? starCounter * (settings.tenOrfive / 10) : starCounter * (settings.tenOrfive * 2 / (settings.starCount) / 2)));
+            console.log("rating : " + (settings.starCount == 10 ? starCounter * (settings.pollingInterval / 10) : starCounter * (settings.pollingInterval * 2 / (settings.starCount) / 2)));
             currentRating = starCounter * 2 - 1;
         };
 
