@@ -23,13 +23,13 @@ ve daha birçok kişiselleştirmeye imkan tanıyan rating (puanlama) scriptidir.
 
 ### Ayarlar ve Varsayılan Değerleri
 
-|Ayar|Varsayılan Değer|Açıklama|
-|:---|:---------------|:-------|
-|starColor| #ffffd2 | Yıldızların mouse üzerinde değilkenki rengi | Fill|
-|starHoverColor| #f2f200 | Yıldızların mouse üzerine geldiğinde ve tıklandıldığındaki rengi | Fill|
-|backgroundColor| transparent | Yıldızların arkaplan rengi | Boşluklar|
-|starWidth| 50 | Her bir yıldızın genişliği|
-|starCount| 10 | Yıldız sayısı|
-|pollingInterval| 10 | Oylama aralığı | [1|2|3|..|10|..|9999|..]|
-|percent| true | Yarım puan oy verebilme | Verememe | [true|false]|
-|transition| fill 1s cubic-bezier(0.4, 0, 1, 1) | Transition effect|
+|Ayar              |Varsayılan Değer|Açıklama|
+|:-----------------|:---------------|:-------|
+|starColor         | #ffffd2                            | Yıldızların mouse üzerinde değilkenki rengi|
+|starHoverColor    | #f2f200                            | Yıldızların mouse üzerine geldiğinde ve tıklandıldığındaki rengi|
+|backgroundColor   | transparent                        | Yıldızların arkaplan rengi // Boşluklar|
+|starWidth         | 50                                 | Her bir yıldızın genişliği|
+|starCount         | 10                                 | Yıldız sayısı|
+|pollingInterval   | 10                                 | Oylama aralığı // [1|2|3|..|10|..|9999|..]|
+|percent           | true                               | Yarım puan oy (verebilme,verememe) // [true|false]|
+|transition        | fill 1s cubic-bezier(0.4, 0, 1, 1) | Transition effect|
