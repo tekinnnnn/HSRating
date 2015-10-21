@@ -1,9 +1,9 @@
 # halfStarRatingSystem
 
 ## Nedir ?
-+Javascript
-+Jquery
-+SVG
+*Javascript
+*Jquery
+*SVG
 
 kullanarak;
 -istenilen sayıda yıldız ile 
