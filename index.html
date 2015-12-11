@@ -3,16 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+        body {
+            background-color: #777;
+            color: #fff;
+            font-family: monospace;
+            font-weight: bold;
+    }
+    </style>
     <script type="text/javascript" src="assets/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="assets/js/halfStar.js"></script>
 </head>
 <body>
 
+  <div id="HSRating"></div>
+  <br>
+    See the console for result
+  <br>
+  <br>
+  <a href="http://tekinnnnn.github.io/HSRating/">Github</a>
+
 </body>
 <script type="text/javascript">
     var settings = {
         "pollingInterval": 15,
-        "percent": false
+        "percent": false,
+        "appendThis": "div#HSRating"
     };
     ratingStar(settings);
 </script>
