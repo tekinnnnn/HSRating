@@ -7,7 +7,8 @@ function ratingStar(settings) {
         "starCount": 10, // Yıldız sayısı
         "pollingInterval": 10, // Oylama aralığı | [1|2|3|..|10|..|9999|..]
         "percent": true, // Yarım puan oy verebilme | Verememe | [true|false]
-        "transition": "fill 1s cubic-bezier(0.4, 0, 1, 1)" // Transition effect
+        "transition": "fill 1s cubic-bezier(0.4, 0, 1, 1)", // Transition effect
+        "appendThis": "body"
     };
 
     // TODO: tıklamaların returnlerini virgülden sonra ($n) rakam olacak şekilde ver
@@ -36,7 +37,7 @@ function ratingStar(settings) {
         container.appendChild(createStar(i, settings));
     }
     container.appendChild(createRect(i - 1, settings));
-    document.body.appendChild(container);
+    document.querySelector(settings.appendThis).appendChild(container);
 
     function createRect(starCounter, settings) {
         var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
